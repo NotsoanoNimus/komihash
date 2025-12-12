@@ -19,9 +19,9 @@ be switched off with a define).
 Technically, `komihash` is close to the class of hash functions like `wyhash`
 and `CircleHash`, which are, in turn, close to the `lehmer64` PRNG. However,
 `komihash` is structurally different to them in that it accumulates the full
-128-bit multiplication result, without "compression" into a single 64-bit
-state variable. Thus `komihash` does not lose differentiation between
-consecutive states while others may.
+128-bit multiplication result, without folding into a single 64-bit state
+variable. Thus `komihash` does not lose differentiation between consecutive
+states while others may.
 
 Another important difference in `komihash` is that it parses the input message
 without overlaps. While overlaps allow a function to have fewer code branches,
@@ -53,12 +53,12 @@ platforms is best evaluated at the
 [Daniel J. Bernstein](https://en.wikipedia.org/wiki/Daniel_J._Bernstein) for
 maintaining the benchmark.
 
-This function and its source code (which is
+This function and the source code (which conforms to
 [ISO C99](https://en.wikipedia.org/wiki/C99)) were quality-tested on:
-Clang, GCC, MSVC, Intel C++ compilers; x86, x86-64 (Intel, AMD), AArch64
-(Apple Silicon) architectures; Windows 10, AlmaLinux 9.3, macOS 13.3.
-Full C++ compliance is enabled conditionally and automatically, when the
-source code is compiled with a C++ compiler.
+Clang, GCC, MSVC, and Intel C++ compilers; x86, x86-64 (Intel, AMD), and
+AArch64 (Apple Silicon) architectures; Windows 10, AlmaLinux 9.3, and
+macOS 13.3. Full C++ compliance is enabled conditionally and automatically
+when the source code is compiled with a C++ compiler.
 
 ## Usage
 
@@ -146,9 +146,9 @@ produce a hash value of any required bit-size.
 
 ## Customizing C++ namespace
 
-If for some reason, in C++ environment, it is undesired to export `komihash`
-symbols into the global namespace, the `KOMIHASH_NS_CUSTOM` macro can be
-defined externally:
+In C++ environments where it is undesirable to export `komihash` symbols into
+the global namespace, the `KOMIHASH_NS_CUSTOM` macro can be defined
+externally:
 
 ```c++
 #define KOMIHASH_NS_CUSTOM komihash
@@ -164,9 +164,9 @@ Similarly, `komihash` symbols can be placed into any other custom namespace
 ```
 
 This way, `komihash` functions can be referenced like
-`my_hashes::komihash(...)`. Note that since all `komihash` functions have a
-`static inline` specifier, there can be no ABI conflicts, even if the
-`komihash.h` header is included in unrelated, mixed C/C++, compilation units.
+`my_hashes::komihash(...)`. Note that since all `komihash` functions have the
+`static` specifier, there can be no ABI conflicts, even if the `komihash.h`
+header is included in unrelated, mixed C/C++, compilation units.
 
 ## Comparisons
 
@@ -197,7 +197,7 @@ Compiler options: `/Ox -msse2`.
 |Platform         |1                |1              |1              |2      |2    |2   |3      |3    |3   |4      |4    |4   |5      |5    |5   |6      |6    |6   |7      |7    |7   |8      |8    |8   |9      |9    |9   |10     |10   |10  |
 |-----------------|-----------------|---------------|---------------|-------|-----|----|-------|-----|----|-------|-----|----|-------|-----|----|-------|-----|----|-------|-----|----|-------|-----|----|-------|-----|----|-------|-----|----|
 |Hash function    |`0-15b, cycles/h`|8-28b, cycles/h|bulk, GB/s     |`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|`0-15b`|8-28b|bulk|
-|**komihash 5.27**|`9.7`            |11.2           |27.1           |`9.7`  |11.2 |27.1|`11.8` |13.9 |23.2|`9.7`  |11.3 |31.7|`10.0` |11.4 |31.0|`10.0` |11.4 |31.0|`12.0` |13.2 |22.8|`15.0` |18.0 |19.4|`8.1`  |7.9  |23.6|`7.0`  |8.0  |42.7|
+|**komihash 5.28**|`9.7`            |11.2           |27.1           |`9.7`  |11.2 |27.1|`11.8` |13.9 |23.2|`9.7`  |11.3 |31.7|`10.0` |11.4 |31.0|`10.0` |11.4 |31.0|`12.0` |13.2 |22.8|`15.0` |18.0 |19.4|`8.1`  |7.9  |23.6|`7.0`  |8.0  |42.7|
 |wyhash_final4    |`14.5`           |18.2           |29.3           |`14.7` |18.2 |29.3|`25.9` |32.9 |12.5|`16.8` |21.6 |34.6|`17.2` |23.1 |35.3|`17.3` |23.2 |35.5|`15.5` |20.4 |29.8|`21.1` |26.1 |19.4|`7.9`  |8.1  |26.1|`13.9` |18.5 |41.7|
 |XXH3_64 0.8.0    |`15.5`           |28.8           |30.0           |`15.5` |28.7 |61.8|`21.8` |27.2 |29.6|`18.5` |25.6 |68.3|`19.2` |25.3 |33.8|`19.7` |26.3 |63.6|`18.4` |23.0 |48.3|`19.9` |25.8 |28.0|`8.2`  |8.2  |30.5|`15.4` |31.0 |50.3|
 |XXH64 0.8.0      |`12.5`           |17.5           |17.2           |`12.5` |17.5 |17.3|`24.3` |36.6 |8.9 |`10.5` |14.2 |20.1|`11.2` |14.6 |20.1|`11.2` |14.6 |20.0|`13.2` |17.3 |17.7|`18.8` |24.7 |16.0|`8.8`  |10.4 |14.5|`9.1`  |12.7 |31.4|
@@ -213,7 +213,7 @@ overhead. Measurement error is approximately 3%.
 
 |Hash function    |0-15b, cycles/h|8-28b, cycles/h|
 |----             |----           |----           |
-|**komihash 5.27**|**7.3**        |**8.7**        |
+|**komihash 5.28**|**7.3**        |**8.7**        |
 |komihash 5.10    |8.2            |9.8            |
 |komihash 4.5     |9.5            |11.4           |
 |komihash 4.3     |10.4           |12.1           |
@@ -314,9 +314,10 @@ is not yet in memory.
 
 The `komirand()` function available in the `komihash.h` file implements a
 simple, but reliable, self-starting, and fast (`0.62` cycles/byte) 64-bit
-pseudo-random number generator (PRNG) with `2^64` period. It is based on the
+pseudo-random number generator (PRNG) with a `2^64` period. It is based on the
 same mathematical construct as the `komihash` hash function. `komirand`
-passes `PractRand` tests.
+passes `PractRand` tests (at least up to 1 TB length, at the default settings)
+and `SmokeRand` tests (full setting).
 
 The PRNG has a 128-bit state which is divided into two 64-bit unsigned integer
 variables ($s_{1}$ and $s_{2}$).
@@ -333,8 +334,9 @@ $s_{1}'$ is used as PRNG output.
 
 This construct can be scaled to any even-sized registers beside 64-bit ones
 (e.g., 32, 48) - it is invariant to the register size. The $C$ used in
-`komirand` (`0xAAAA...`) is a good choice as such constant carries no spectral
-information, and its influence on the statistics and modes is minimal.
+`komirand` (`0xAAAA...`) is a good choice as such constant carries no bit-wise
+spectral information, and its influence on the statistics and modes is
+minimal.
 
 For hashing, the following expression for $m_{128}$ is used:
 
