@@ -383,18 +383,18 @@ This function is named the way it is named is to honor
 the [Komi Republic](https://en.wikipedia.org/wiki/Komi_Republic) (located in
 Russia), native to the author.
 
-According to OMNIUM REGIONUM MOSCOVIAE DESCRIPTIO by ALEXANDRI GWAGNINI
-VERONENSIS 1611, the territory of the Komi Republic was internationally
-known as Condora Regio inhabited by people worshipping a golden
-(sun-shining) woman-goddess, usually depicted as holding a child and
-a spear, Zarni Ana (Зарни Ань), and usually roughly translated as
-Zlatababa. Condora is also mentioned as a territory near the Mezena
-(Мезень) river on the map produced by Englishman Anthony Jenkinson in
-1562. "Condora" may have meant a "pine country" (from Komi "conda"-pine
+According to [Sarmatiae Europeae descriptio](https://www.digitale-sammlungen.de/en/details/bsb11202361)
+by Alexander Gwagnin 1581 (Moschoviae Descriptio p.86.b), the territory of
+the Komi Republic was internationally known as Condora Regio inhabited by
+people worshipping a golden (sun-shining) woman-goddess, usually depicted as
+holding a child and a spear, Zarni Ana (Зарни Ань), and usually roughly
+translated as Zlatababa. Condora is also mentioned as a territory near
+the Mezena (Мезень) river on the map produced by Englishman Anthony Jenkinson
+in 1562. "Condora" may have meant a "pine country" (from Komi "conda"-pine
 and "dor"-region, land area, country). Southern part of the modern Komi
-Republic near the Voichegda and Vischera rivers, baptized by bishop
-Stephen Velickopermsky, was known as Permia, which does not correspond
-to the modern Perm region near the Cama river.
+Republic near the Voichegda and Vischera rivers, baptized by bishop Stephen
+Velickopermsky, was known as Permia, which does not correspond to the modern
+Perm region near the Cama river.
 
 ## Test Vectors
 
